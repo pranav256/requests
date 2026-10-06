@@ -879,6 +879,7 @@ def test_should_bypass_proxies_no_proxy_domain_boundary(url, expected):
         ("http://172.16.1.22/", False, None),
         ("http://172.16.1.22:5000/", False, None),
         ("http://google.com:5000/v1.0/", False, None),
+        ("http://google.com.evil.com:5000/v1.0/", False, "google.com"),
         ("http://mylocalhostname:5000/v1.0/", True, "<local>"),
         ("http://192.168.0.1/", False, ""),
     ),

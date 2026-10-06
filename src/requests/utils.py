@@ -130,7 +130,8 @@ if sys.platform == "win32":
             test = test.replace(".", r"\.")  # mask dots
             test = test.replace("*", r".*")  # change glob sequence
             test = test.replace("?", r".")  # change glob char
-            if re.match(test, host, re.I):
+            # Match the whole hostname rather than just a prefix.
+            if re.match(test + r"\Z", host, re.I):
                 return True
         return False
 
